@@ -1,17 +1,21 @@
+from pprint import pprint
+
 grid = [
-    [5,3,0,0,7,0,0,0,0],
-    [6,0,0,1,9,5,0,0,0],
-    [0,9,8,0,0,0,0,6,0],
-    [8,0,0,0,6,0,0,0,3],
-    [4,0,0,8,0,3,0,0,1],
-    [7,0,0,0,2,0,0,0,6],
-    [0,6,0,0,0,0,2,8,0],
-    [0,0,0,4,1,9,0,0,5],
-    [0,0,0,0,8,0,0,7,9]
+    [0,0,0,0,0,0,0,0,0],
+    [0,1,2,0,3,4,5,6,7],
+    [0,3,4,5,0,6,1,8,2],
+    [0,0,1,0,5,8,2,0,6],
+    [0,0,8,6,0,0,0,0,1],
+    [0,2,0,0,0,7,0,5,0],
+    [0,0,3,7,0,5,0,2,8],
+    [0,8,0,0,6,0,7,0,0],
+    [2,0,7,0,8,3,6,1,5]
 ]
+#first let's print sudoku before solving it.
+pprint(grid)
 
-print(grid)
-
+#let's make function that checks if value given at position will be right or not.
+#If value is valid at that position then it will return True else it will return False.
 def possible(y,x,n):
     global grid
     for i in range(0,9):
@@ -28,9 +32,11 @@ def possible(y,x,n):
                 return False
     return True
 
-print(possible(4,4,6))
-print(possible(4,4,5))
+#Let's check function is working or not.
+#Let's see at position 4,4 can we put 6 or not
+pprint(possible(4,4,6))
 
+#Let's make function which will do backtracking. ( will use recursion also )
 def solve():
     global grid
     for y in range(9):
@@ -42,5 +48,7 @@ def solve():
                         solve()
                         grid[y][x] = 0
                 return
-    print(grid)
+    pprint(grid)
+
+ #let's solve this sudoku
 solve() 
